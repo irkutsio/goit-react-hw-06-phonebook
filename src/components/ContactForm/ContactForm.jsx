@@ -1,8 +1,8 @@
 
-import PropTypes from 'prop-types';
+import { nanoid } from '@reduxjs/toolkit';
 import { Fields } from './ContactForm.styled';
 import { useDispatch } from 'react-redux';
-import { createContact } from 'redux/actions';
+import { createContact } from 'redux/contactsSlice';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -13,6 +13,7 @@ export const ContactForm = () => {
     const form = {
       name: name.value,
       number: number.value,
+      id:nanoid(),
     };
 
     e.target.reset();
@@ -49,6 +50,3 @@ export const ContactForm = () => {
   );
 };
 
-ContactForm.propTypes = {
-  getUserContact: PropTypes.func.isRequired,
-};
